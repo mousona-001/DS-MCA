@@ -2,11 +2,24 @@
 multiplication is possible or not. Then multiplies the matrices and prints the 3rd matrices.*/
 #include<stdio.h>
 #define MAX 10
+
+void displayMatrices(int matrix[MAX][MAX], int row, int col){
+  for(int i = 0; i < row; i++){
+    for(int j = 0; j < col; j++){
+      printf("%d ", matrix[i][j]);
+    }
+    printf("\n");
+  }
+}
+void inputMatrices(int matrix[MAX][MAX], int row, int col){
+  for(int i = 0; i < row; i++){
+    for(int j = 0; j < col; j++){
+      scanf("%d", &matrix[i][j]);
+    }
+  }
+}
 int main(){
-  int matrix1[MAX][MAX];
-  int matrix2[MAX][MAX];
-  int sum[MAX][MAX];
-  int row1, col1, row2, col2;
+  int matrix1[MAX][MAX], matrix2[MAX][MAX], sum[MAX][MAX], row1, col1, row2, col2;
   printf("Enter the number of rows and columns of the first matrix: ");
   scanf("%d %d", &row1, &col1);
   printf("Enter the number of rows and columns of the second matrix: ");
@@ -16,31 +29,14 @@ int main(){
     return 0;
   }
   printf("Enter the elements of the first matrix: \n");
-  for(int i = 0; i < row1; i++){
-    for(int j = 0; j < col1; j++){
-      scanf("%d", &matrix1[i][j]);
-    }
-  }
+  inputMatrices(matrix1, row1, col1);
   printf("Enter the elements of the second matrix: \n");
-  for(int i = 0; i < row2; i++){
-    for(int j = 0; j < col2; j++){
-      scanf("%d", &matrix2[i][j]);
-    }
-  }
+  inputMatrices(matrix2, row2, col2);
   printf("The first matrix is: \n");
-  for(int i = 0; i < row1; i++){
-    for(int j = 0; j < col1; j++){
-      printf("%d ", matrix1[i][j]);
-    }
-    printf("\n");
-  }
+  displayMatrices(matrix1, row1, col1);
   printf("The second matrix is: \n");
-  for(int i = 0; i < row2; i++){
-    for(int j = 0; j < col2; j++){
-      printf("%d ", matrix2[i][j]);
-    }
-    printf("\n");
-  }
+  displayMatrices(matrix2, row2, col2);
+  // Multiplying the matrices
   for(int i = 0; i < row1; i++){
     for(int j = 0; j < col2; j++){
       sum[i][j] = 0;
@@ -50,11 +46,6 @@ int main(){
     }
   }
   printf("The resultant matrix is: \n");
-  for(int i = 0; i < row1; i++){
-    for(int j = 0; j < col2; j++){
-      printf("%d ", sum[i][j]);
-    }
-    printf("\n");
-  }
+  displayMatrices(sum, row1, col2);
   return 0;
 }
